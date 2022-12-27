@@ -16,14 +16,18 @@ function sortAccountsByLastName(accounts) {
 
 //END
 
-// TOTAL # BORROWS
+
+// TOTAL # BORROWS // H FUNCTION
 function getTotalNumberOfBorrows(account, books) {
   return books.reduce((total, book) => {
-    const idCount = book.borrows.filter(
-      (borrow) => borrow.id === account.id
-    ).length;
+    const idCount = borrowCount(book, account);
     return total + idCount;
   }, 0);
+}
+function borrowCount(book, account) {
+  return book.borrows.filter(
+    (borrow) => borrow.id === account.id
+  ).length;
 }
 //END
 
